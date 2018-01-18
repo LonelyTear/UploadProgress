@@ -68,7 +68,7 @@ public class UploadServlet extends HttpServlet {
 						System.out.println(name + ":" + value);
 					} else {
 						// OutputStream outStream = item.getOutputStream();
-						// InputStream inputSteram = item.getInputStream();
+						// InputStream inputStream = item.getInputStream();
 						if(!"".equals(item.getName())){
 							String extensionName = FilenameUtils.getExtension(item.getName());//取扩展名,本处不使用
 							File uploadedFile = new File("D:/temp/destDir/" + item.getName());

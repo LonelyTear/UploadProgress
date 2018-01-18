@@ -64,6 +64,8 @@
 		<div>
 			<hr/>
 			<label>主要使用jquery-1.9.1.js,commons-fileupload-1.3.1.jar,commons-io-2.4.jar实现.</label>
+			<hr/>
+			参考链接:<a href="http://blog.csdn.net/lian_zhihui1984/article/details/6822201" target="_blank">http://blog.csdn.net/lian_zhihui1984/article/details/6822201</a>
 		</div>
 	</form>
 	<iframe id="uploadFrame" name="uploadFrame" style="display: none"></iframe>
