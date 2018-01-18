@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.FilenameUtils;
 
 /**
  * 文件上传主入口Servlet
@@ -69,6 +70,7 @@ public class UploadServlet extends HttpServlet {
 						// OutputStream outStream = item.getOutputStream();
 						// InputStream inputSteram = item.getInputStream();
 						if(!"".equals(item.getName())){
+							String extensionName = FilenameUtils.getExtension(item.getName());//取扩展名,本处不使用
 							File uploadedFile = new File("D:/temp/destDir/" + item.getName());
 							item.write(uploadedFile);
 						}
