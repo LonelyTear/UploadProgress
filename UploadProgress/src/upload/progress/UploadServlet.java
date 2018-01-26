@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import listener.MyProgressListener;
+
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -19,7 +21,6 @@ import org.apache.commons.io.FilenameUtils;
  * 文件上传主入口Servlet
  * commons-fileupload同时上传多个文件,缺点是只能显示一个总的进度条
  * @author King
- *
  */
 public class UploadServlet extends HttpServlet {
 
@@ -32,6 +33,8 @@ public class UploadServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		// Check that we have a file upload request
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 		if (isMultipart) {
@@ -55,6 +58,7 @@ public class UploadServlet extends HttpServlet {
 			upload.setProgressListener(getBarListener);
 
 			try {
+				Thread.currentThread().sleep(3000);
 				// Parse the request
 				List<FileItem> items = upload.parseRequest(request);
 
@@ -64,7 +68,7 @@ public class UploadServlet extends HttpServlet {
 					FileItem item = iter.next();
 					if (item.isFormField()) {
 						String name = item.getFieldName();
-						String value = item.getString();
+						String value = item.getString("UTF-8");
 						System.out.println(name + ":" + value);
 					} else {
 						// OutputStream outStream = item.getOutputStream();
@@ -82,7 +86,7 @@ public class UploadServlet extends HttpServlet {
 				response.getWriter().write(e.getMessage());
 			}
 		} else {
-			response.getWriter().write("is not Multipart !");
+			response.getWriter().write("sorry ! is not Multipart !");
 		}
 
 	}

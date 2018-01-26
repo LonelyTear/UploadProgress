@@ -1,6 +1,6 @@
-package upload.progress;
+package vo;
 
-public class ProcessStatus {
+public class ProcessStatusVo {
 	public long pContentLength = 1;
 	public long pBytesRead = 0;
 	public String show = "";

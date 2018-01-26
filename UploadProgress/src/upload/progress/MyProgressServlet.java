@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import vo.ProcessStatusVo;
+
 public class MyProgressServlet extends HttpServlet {
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
@@ -15,7 +17,7 @@ public class MyProgressServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
-		ProcessStatus status = (ProcessStatus) session.getAttribute("status");
+		ProcessStatusVo status = (ProcessStatusVo) session.getAttribute("status");
 		response.reset();
 		try {
 			System.out.println(status.toString());
