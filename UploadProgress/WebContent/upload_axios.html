@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>axios upload file</title>
+<!-- <script	src="http://localhost:9090/chifeng-bed-reservation/static/js/axios.min.js"></script> -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<!-- chifeng-bed-reservation 增加axios文件上传功能,但没有对应后台,只有本html前台 -->
+<body>
+	<form>
+
+		<div>
+			<hr />
+			<div>
+				状态<input type="text" name="status" style="width: 550" value="0">
+			</div>
+			<div>
+				期望入住日期<input type="text" name="expectDate" style="width: 550"
+					value="2019-04-03">
+			</div>
+			<div>
+				病人编号<input type="text" name="patientId" style="width: 550"
+					value="patientId2">
+			</div>
+			<div>
+				病情描述<input type="text" name="patientDesc" style="width: 550"
+					value="描述abc">
+			</div>
+			<div>
+				文件1<input type="file" name="files" style="width: 550"> 文件2<input
+					type="file" name="files" style="width: 550">
+			</div>
+
+			<div>
+				<button type="button" id="submitBtn" onclick="update()">上传2</button>
+			</div>
+		</div>
+
+
+	</form>
+	<script>
+	
+	
+function update (){  // 上传
+		var currentForm = document.querySelector("form");
+	   let config = {  };//不需要,会自动追加
+	   axios.post('http://localhost:9090/chifeng-bed-reservation/bed/insert.do', 
+			new FormData(currentForm),   config
+		)
+	   .then(function (response) {
+	     console.log("response");
+	   })
+	   .catch(function (error) {
+	     console.log("error");
+	   });
+}
+  </script>
+</body>
+
+</html>
+
